@@ -31,42 +31,44 @@ Copy    body {
 
     .bookshelf {
         position: absolute;
-        width: 60px;
-        height: 120px;
+        width: 80px;
+        height: 140px;
         background: linear-gradient(90deg, #654321 0%, #8B4513 50%, #654321 100%);
-        border: 2px solid #4A4A4A;
-        border-radius: 5px;
+        border: 3px solid #4A4A4A;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
     .bookshelf:before {
         content: '';
         position: absolute;
-        top: 20px;
-        left: 5px;
-        right: 5px;
-        height: 15px;
-        background: repeating-linear-gradient(90deg, #FF6B6B 0px, #FF6B6B 8px, #4ECDC4 8px, #4ECDC4 16px, #45B7D1 16px, #45B7D1 24px, #96CEB4 24px, #96CEB4 32px);
-        border-radius: 2px;
+        top: 25px;
+        left: 8px;
+        right: 8px;
+        height: 20px;
+        background: repeating-linear-gradient(90deg, #FF6B6B 0px, #FF6B6B 10px, #4ECDC4 10px, #4ECDC4 20px, #45B7D1 20px, #45B7D1 30px, #96CEB4 30px, #96CEB4 40px);
+        border-radius: 3px;
     }
 
     .bookshelf:after {
         content: '';
         position: absolute;
-        bottom: 20px;
-        left: 5px;
-        right: 5px;
-        height: 15px;
-        background: repeating-linear-gradient(90deg, #DDA0DD 0px, #DDA0DD 8px, #F0E68C 8px, #F0E68C 16px, #FFB6C1 16px, #FFB6C1 24px, #98FB98 24px, #98FB98 32px);
-        border-radius: 2px;
+        bottom: 25px;
+        left: 8px;
+        right: 8px;
+        height: 20px;
+        background: repeating-linear-gradient(90deg, #DDA0DD 0px, #DDA0DD 10px, #F0E68C 10px, #F0E68C 20px, #FFB6C1 20px, #FFB6C1 30px, #98FB98 30px, #98FB98 40px);
+        border-radius: 3px;
     }
 
     .cafe-table {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         background: radial-gradient(circle, #8B4513 30%, #654321 70%);
         border-radius: 50%;
-        border: 3px solid #4A4A4A;
+        border: 4px solid #4A4A4A;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.4);
     }
 
     .cafe-table:after {
@@ -75,19 +77,19 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 16px;
+        font-size: 24px;
     }
 
     #player {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         background: linear-gradient(45deg, #FF6B9D, #FF8E53);
         border-radius: 50%;
-        border: 3px solid #FFF;
-        transition: all 0.1s ease;
+        border: 4px solid #FFF;
+        transition: all 0.15s ease;
         z-index: 100;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.4);
     }
 
     #player:before {
@@ -96,21 +98,59 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 20px;
+        font-size: 32px;
+    }
+
+    .kid {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 3px solid #FFF;
+        transition: all 0.2s ease;
+        z-index: 90;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .kid.boy {
+        background: linear-gradient(45deg, #4A90E2, #7BB3F0);
+    }
+
+    .kid.boy:before {
+        content: '👦';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
+
+    .kid.girl {
+        background: linear-gradient(45deg, #E24A90, #F07BB3);
+    }
+
+    .kid.girl:before {
+        content: '👧';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
     }
 
     .collectible {
         position: absolute;
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         animation: float 2s ease-in-out infinite;
         z-index: 50;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     .book {
         background: linear-gradient(45deg, #4ECDC4, #45B7D1);
-        border: 2px solid #FFF;
+        border: 3px solid #FFF;
     }
 
     .book:before {
@@ -119,12 +159,12 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 16px;
+        font-size: 28px;
     }
 
     .coffee {
         background: linear-gradient(45deg, #D2691E, #8B4513);
-        border: 2px solid #FFF;
+        border: 3px solid #FFF;
     }
 
     .coffee:before {
@@ -133,12 +173,12 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 16px;
+        font-size: 28px;
     }
 
     .healthy-snack {
         background: linear-gradient(45deg, #98FB98, #90EE90);
-        border: 2px solid #FFF;
+        border: 3px solid #FFF;
     }
 
     .healthy-snack:before {
@@ -147,12 +187,12 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 16px;
+        font-size: 28px;
     }
 
     .running-shoe {
         background: linear-gradient(45deg, #FF1493, #FF69B4);
-        border: 2px solid #FFF;
+        border: 3px solid #FFF;
     }
 
     .running-shoe:before {
@@ -161,12 +201,89 @@ Copy    body {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 16px;
+        font-size: 28px;
+    }
+
+    .croissant {
+        background: linear-gradient(45deg, #DEB887, #F4A460);
+        border: 3px solid #FFF;
+    }
+
+    .croissant:before {
+        content: '🥐';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
+
+    .tea {
+        background: linear-gradient(45deg, #9ACD32, #8FBC8F);
+        border: 3px solid #FFF;
+    }
+
+    .tea:before {
+        content: '🍵';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
+
+    .cookie {
+        background: linear-gradient(45deg, #CD853F, #D2691E);
+        border: 3px solid #FFF;
+    }
+
+    .cookie:before {
+        content: '🍪';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
+
+    .fruit {
+        background: linear-gradient(45deg, #FFB347, #FFA500);
+        border: 3px solid #FFF;
+    }
+
+    .fruit:before {
+        content: '🍎';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+    }
+
+    .dirty-dish {
+        background: linear-gradient(45deg, #696969, #808080);
+        border: 3px solid #8B0000;
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .dirty-dish:before {
+        content: '🍽️';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28px;
+        filter: grayscale(100%) brightness(0.7);
     }
 
     @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-15px) scale(1.05); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
     }
 
     #ui {
@@ -181,13 +298,14 @@ Copy    body {
     }
 
     #score, #timer {
-        background: rgba(0,0,0,0.7);
+        background: rgba(0,0,0,0.8);
         color: #FFD700;
-        padding: 10px 15px;
-        border-radius: 20px;
-        font-size: 18px;
+        padding: 12px 18px;
+        border-radius: 25px;
+        font-size: 20px;
         font-weight: bold;
-        border: 2px solid #FFD700;
+        border: 3px solid #FFD700;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
     #popup {
@@ -196,39 +314,40 @@ Copy    body {
         left: 50%;
         transform: translate(-50%, -50%);
         background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
-        padding: 30px;
-        border-radius: 20px;
-        border: 4px solid #FF69B4;
+        padding: 35px;
+        border-radius: 25px;
+        border: 5px solid #FF69B4;
         text-align: center;
         z-index: 300;
         display: none;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         max-width: 90%;
     }
 
     #popup h2 {
         color: #FF1493;
-        margin-bottom: 15px;
-        font-size: 24px;
+        margin-bottom: 18px;
+        font-size: 26px;
     }
 
     #popup p {
         color: #8B008B;
-        font-size: 18px;
-        margin-bottom: 20px;
-        line-height: 1.4;
+        font-size: 20px;
+        margin-bottom: 25px;
+        line-height: 1.5;
     }
 
     #popup button {
         background: linear-gradient(45deg, #FF69B4, #FF1493);
         color: white;
         border: none;
-        padding: 12px 25px;
-        border-radius: 25px;
-        font-size: 16px;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 18px;
         font-weight: bold;
         cursor: pointer;
         transition: transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
     #popup button:hover {
@@ -248,20 +367,20 @@ Copy    body {
         align-items: center;
         z-index: 400;
         text-align: center;
-        padding: 20px;
+        padding: 25px;
     }
 
     #startScreen h1 {
         color: #FFD700;
-        font-size: 28px;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        font-size: 32px;
+        margin-bottom: 25px;
+        text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
     }
 
     #startScreen p {
         color: #FFF;
-        font-size: 16px;
-        margin-bottom: 30px;
+        font-size: 18px;
+        margin-bottom: 35px;
         line-height: 1.6;
     }
 
@@ -269,13 +388,13 @@ Copy    body {
         background: linear-gradient(45deg, #FF69B4, #FF1493);
         color: white;
         border: none;
-        padding: 15px 30px;
-        border-radius: 30px;
-        font-size: 20px;
+        padding: 18px 35px;
+        border-radius: 35px;
+        font-size: 22px;
         font-weight: bold;
         cursor: pointer;
         transition: transform 0.2s;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     }
 
     #startButton:hover {
@@ -284,8 +403,8 @@ Copy    body {
 
     .particle {
         position: absolute;
-        width: 4px;
-        height: 4px;
+        width: 6px;
+        height: 6px;
         background: #FFD700;
         border-radius: 50%;
         pointer-events: none;
@@ -299,15 +418,39 @@ Copy    body {
         }
         100% {
             opacity: 0;
-            transform: translateY(-100px) scale(0);
+            transform: translateY(-120px) scale(0);
+        }
+    }
+
+    .damage-text {
+        position: absolute;
+        color: #FF0000;
+        font-size: 24px;
+        font-weight: bold;
+        pointer-events: none;
+        animation: damage-float 2s ease-out forwards;
+        z-index: 150;
+    }
+
+    @keyframes damage-float {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-80px);
         }
     }
 
     @media (max-height: 600px) {
-        #startScreen h1 { font-size: 24px; }
-        #startScreen p { font-size: 14px; }
-        #popup h2 { font-size: 20px; }
-        #popup p { font-size: 16px; }
+        #startScreen h1 { font-size: 28px; }
+        #startScreen p { font-size: 16px; }
+        #popup h2 { font-size: 22px; }
+        #popup p { font-size: 18px; }
+        .collectible { width: 45px; height: 45px; }
+        #player { width: 55px; height: 55px; }
+        .kid { width: 45px; height: 45px; }
     }
 </style>
 </head>
@@ -315,19 +458,24 @@ Copy    body {
     <div id="startScreen">
         <h1>🎉 Happy 33rd Birthday! 🎉</h1>
         <p>Welcome to your personalized Café Literary Quest!<br>
+        Cassian and Charlie want to play with you!<br>
         Explore the charming Parisian bookstore café,<br>
         collect books, coffee, and healthy treats!<br><br>
         👆 Tap anywhere to move<br>
-        📚 Collect items for points<br>
+        📚 Collect good items for points<br>
+        🍽️ Avoid dirty dishes (-10 points)<br>
+        👦👧 The kids will follow you around!<br>
         ⏰ Beat the clock!</p>
         <button id="startButton">Start Your Adventure!</button>
     </div>
 Copy<div id="gameContainer">
     <div id="ui">
         <div id="score">Score: 0</div>
-        <div id="timer">Time: 60</div>
+        <div id="timer">Time: 90</div>
     </div>
     <div id="player"></div>
+    <div id="cassian" class="kid boy"></div>
+    <div id="charlie" class="kid girl"></div>
 </div>
 
 <div id="popup">
@@ -339,36 +487,52 @@ Copy<div id="gameContainer">
 <script>
     // Game variables
     let score = 0;
-    let timeLeft = 60;
+    let timeLeft = 90;
     let gameRunning = false;
     let player = document.getElementById('player');
+    let cassian = document.getElementById('cassian');
+    let charlie = document.getElementById('charlie');
     let gameContainer = document.getElementById('gameContainer');
     let collectibles = [];
-    let obstacles = [];
     let gameTimer;
     let spawnTimer;
+    let kidMoveTimer;
     
     // Player position
-    let playerX = window.innerWidth / 2 - 20;
-    let playerY = window.innerHeight / 2 - 20;
+    let playerX = window.innerWidth / 2 - 30;
+    let playerY = window.innerHeight / 2 - 30;
+    
+    // Kids positions
+    let cassianX = playerX - 100;
+    let cassianY = playerY + 50;
+    let charlieX = playerX + 100;
+    let charlieY = playerY + 50;
+    
+    // Table positions (organized grid)
+    let tablePositions = [];
     
     // Congratulatory messages
     const messages = [
-        "Cassian and Charlie Love You! 💕",
+        "Cassian says: 'Mommy, you're the best!' 💙",
+        "Charlie says: 'I love you so much, Mama!' 💕",
         "You are such a great runner! 🏃‍♀️",
         "Happy Birthday from your book-loving family! 📚",
         "Another chapter in your amazing story! ✨",
         "Healthy and happy at 33! 🌟",
-        "Keep reading, keep running, keep being amazing! 💪"
+        "Keep reading, keep running, keep being amazing! 💪",
+        "Cassian and Charlie are so proud of you! 👶👶",
+        "The kids love playing with you! 🎮",
+        "You're the coolest mom ever! 😎"
     ];
     
     const winMessages = [
         "Happy Birthday From Charlie, Cassian and Dada! 🎉💕",
         "You completed your literary café adventure! 📚☕",
-        "33 years of being absolutely wonderful! ✨🎂"
+        "33 years of being absolutely wonderful! ✨🎂",
+        "The kids had so much fun chasing you around! 👦👧"
     ];
 
-    // Sound effects (using Web Audio API)
+    // Sound effects
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     
     function playSound(frequency, duration, type = 'sine') {
@@ -393,6 +557,10 @@ Copy<div id="gameContainer">
         setTimeout(() => playSound(1200, 0.1), 100);
     }
 
+    function playNegativeSound() {
+        playSound(200, 0.3, 'square');
+    }
+
     function playWinSound() {
         const notes = [523, 659, 784, 1047];
         notes.forEach((note, index) => {
@@ -403,6 +571,7 @@ Copy<div id="gameContainer">
     // Initialize game
     function initGame() {
         updatePlayerPosition();
+        updateKidsPositions();
         createStaticElements();
         
         // Touch controls
@@ -414,22 +583,60 @@ Copy<div id="gameContainer">
     }
 
     function createStaticElements() {
-        // Create bookshelves
-        for (let i = 0; i < 6; i++) {
-            const bookshelf = document.createElement('div');
-            bookshelf.className = 'bookshelf';
-            bookshelf.style.left = Math.random() * (window.innerWidth - 60) + 'px';
-            bookshelf.style.top = Math.random() * (window.innerHeight - 200) + 100 + 'px';
-            gameContainer.appendChild(bookshelf);
+        // Create organized table layout
+        const rows = 3;
+        const cols = 4;
+        const tableSpacing = Math.min(window.innerWidth / (cols + 1), window.innerHeight / (rows + 2));
+        
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+                const x = (window.innerWidth / (cols + 1)) * (col + 1) - 30;
+                const y = 150 + (window.innerHeight - 250) / (rows + 1) * (row + 1) - 30;
+                
+                // Ensure tables don't overlap and have proper spacing
+                if (x > 60 && x < window.innerWidth - 120 && y > 120 && y < window.innerHeight - 120) {
+                    const table = document.createElement('div');
+                    table.className = 'cafe-table';
+                    table.style.left = x + 'px';
+                    table.style.top = y + 'px';
+                    gameContainer.appendChild(table);
+                    
+                    tablePositions.push({x: x, y: y, width: 60, height: 60});
+                }
+            }
         }
         
-        // Create café tables
+        // Create fewer, better-placed bookshelves
         for (let i = 0; i < 4; i++) {
-            const table = document.createElement('div');
-            table.className = 'cafe-table';
-            table.style.left = Math.random() * (window.innerWidth - 40) + 'px';
-            table.style.top = Math.random() * (window.innerHeight - 140) + 100 + 'px';
-            gameContainer.appendChild(table);
+            let attempts = 0;
+            let placed = false;
+            
+            while (!placed && attempts < 20) {
+                const x = Math.random() * (window.innerWidth - 100) + 10;
+                const y = Math.random() * (window.innerHeight - 250) + 120;
+                
+                // Check if bookshelf overlaps with tables
+                let overlaps = false;
+                for (let table of tablePositions) {
+                    if (x < table.x + table.width + 20 && 
+                        x + 80 > table.x - 20 && 
+                        y < table.y + table.height + 20 && 
+                        y + 140 > table.y - 20) {
+                        overlaps = true;
+                        break;
+                    }
+                }
+                
+                if (!overlaps) {
+                    const bookshelf = document.createElement('div');
+                    bookshelf.className = 'bookshelf';
+                    bookshelf.style.left = x + 'px';
+                    bookshelf.style.top = y + 'px';
+                    gameContainer.appendChild(bookshelf);
+                    placed = true;
+                }
+                attempts++;
+            }
         }
     }
 
@@ -447,8 +654,8 @@ Copy<div id="gameContainer">
     }
 
     function movePlayerTo(x, y) {
-        playerX = Math.max(20, Math.min(window.innerWidth - 60, x - 20));
-        playerY = Math.max(70, Math.min(window.innerHeight - 60, y - 20));
+        playerX = Math.max(30, Math.min(window.innerWidth - 90, x - 30));
+        playerY = Math.max(80, Math.min(window.innerHeight - 90, y - 30));
         updatePlayerPosition();
     }
 
@@ -457,11 +664,46 @@ Copy<div id="gameContainer">
         player.style.top = playerY + 'px';
     }
 
+    function updateKidsPositions() {
+        cassian.style.left = cassianX + 'px';
+        cassian.style.top = cassianY + 'px';
+        charlie.style.left = charlieX + 'px';
+        charlie.style.top = charlieY + 'px';
+    }
+
+    function moveKids() {
+        if (!gameRunning) return;
+        
+        // Cassian follows player with some delay and offset
+        const cassianSpeed = 1.5;
+        const targetCassianX = playerX - 80 + Math.sin(Date.now() * 0.001) * 20;
+        const targetCassianY = playerY + 60 + Math.cos(Date.now() * 0.001) * 15;
+        
+        cassianX += (targetCassianX - cassianX) * 0.02 * cassianSpeed;
+        cassianY += (targetCassianY - cassianY) * 0.02 * cassianSpeed;
+        
+        // Charlie follows player with different pattern
+        const charlieSpeed = 1.2;
+        const targetCharlieX = playerX + 80 + Math.cos(Date.now() * 0.0015) * 25;
+        const targetCharlieY = playerY + 50 + Math.sin(Date.now() * 0.0015) * 20;
+        
+        charlieX += (targetCharlieX - charlieX) * 0.02 * charlieSpeed;
+        charlieY += (targetCharlieY - charlieY) * 0.02 * charlieSpeed;
+        
+        // Keep kids within bounds
+        cassianX = Math.max(25, Math.min(window.innerWidth - 75, cassianX));
+        cassianY = Math.max(80, Math.min(window.innerHeight - 80, cassianY));
+        charlieX = Math.max(25, Math.min(window.innerWidth - 75, charlieX));
+        charlieY = Math.max(80, Math.min(window.innerHeight - 80, charlieY));
+        
+        updateKidsPositions();
+    }
+
     function startGame() {
         document.getElementById('startScreen').style.display = 'none';
         gameRunning = true;
         score = 0;
-        timeLeft = 60;
+        timeLeft = 90;
         
         // Resume audio context
         if (audioContext.state === 'suspended') {
@@ -480,36 +722,89 @@ Copy<div id="gameContainer">
             }
         }, 1000);
         
-        spawnTimer = setInterval(spawnCollectible, 1500);
+        // More frequent spawning
+        spawnTimer = setInterval(spawnCollectible, 800);
+        
+        // Kids movement
+        kidMoveTimer = setInterval(moveKids, 50);
+        
+        // Initial spawn burst
+        for (let i = 0; i < 5; i++) {
+            setTimeout(() => spawnCollectible(), i * 200);
+        }
         
         // Show welcome message
         setTimeout(() => {
-            showPopup("Welcome to Your Café!", "Cassian and Charlie Love You! 💕");
+            showPopup("Let's Play!", "Cassian and Charlie want to chase you around the café! 👦👧💕");
         }, 2000);
     }
 
     function spawnCollectible() {
         if (!gameRunning) return;
         
-        const types = ['book', 'coffee', 'healthy-snack', 'running-shoe'];
+        // Remove old collectibles to prevent overcrowding
+        if (collectibles.length > 15) {
+            const oldCollectible = collectibles.shift();
+            if (oldCollectible.parentNode) {
+                oldCollectible.parentNode.removeChild(oldCollectible);
+            }
+        }
+        
+        const goodTypes = ['book', 'coffee', 'healthy-snack', 'running-shoe', 'croissant', 'tea', 'cookie', 'fruit'];
+        const badTypes = ['dirty-dish'];
+        
+        // 80% chance for good items, 20% for dirty dishes
+        const isGoodItem = Math.random() < 0.8;
+        const types = isGoodItem ? goodTypes : badTypes;
         const type = types[Math.floor(Math.random() * types.length)];
         
         const collectible = document.createElement('div');
         collectible.className = `collectible ${type}`;
-        collectible.style.left = Math.random() * (window.innerWidth - 30) + 'px';
-        collectible.style.top = Math.random() * (window.innerHeight - 130) + 100 + 'px';
+        
+        // Better positioning to avoid overlaps
+        let x, y, attempts = 0;
+        let validPosition = false;
+        
+        while (!validPosition && attempts < 30) {
+            x = Math.random() * (window.innerWidth - 60) + 5;
+            y = Math.random() * (window.innerHeight - 160) + 120;
+            
+            // Check distance from player, kids, and tables
+            const distFromPlayer = Math.sqrt((x - playerX) ** 2 + (y - playerY) ** 2);
+            const distFromCassian = Math.sqrt((x - cassianX) ** 2 + (y - cassianY) ** 2);
+            const distFromCharlie = Math.sqrt((x - charlieX) ** 2 + (y - charlieY) ** 2);
+            
+            validPosition = distFromPlayer > 80 && distFromCassian > 60 && distFromCharlie > 60;
+            
+            // Check table overlaps
+            if (validPosition) {
+                for (let table of tablePositions) {
+                    if (x < table.x + table.width + 10 && 
+                        x + 50 > table.x - 10 && 
+                        y < table.y + table.height + 10 && 
+                        y + 50 > table.y - 10) {
+                        validPosition = false;
+                        break;
+                    }
+                }
+            }
+            attempts++;
+        }
+        
+        collectible.style.left = x + 'px';
+        collectible.style.top = y + 'px';
         
         gameContainer.appendChild(collectible);
         collectibles.push(collectible);
         
-        // Remove after 8 seconds if not collected
+        // Remove after 12 seconds if not collected
         setTimeout(() => {
             if (collectible.parentNode) {
                 collectible.parentNode.removeChild(collectible);
                 const index = collectibles.indexOf(collectible);
                 if (index > -1) collectibles.splice(index, 1);
             }
-        }, 8000);
+        }, 12000);
     }
 
     function checkCollisions() {
@@ -532,37 +827,74 @@ Copy<div id="gameContainer">
         const type = collectible.classList[1];
         let points = 0;
         
-        switch(type) {
-            case 'book': points = 20; break;
-            case 'coffee': points = 15; break;
-            case 'healthy-snack': points = 25; break;
-            case 'running-shoe': points = 30; break;
+        if (type === 'dirty-dish') {
+            points = -10;
+            playNegativeSound();
+            showDamageText(collectible, '-10');
+            
+            // Show encouraging message occasionally
+            if (Math.random() < 0.3) {
+                setTimeout(() => {
+                    const encouragement = [
+                        "It's okay, Mama! Keep going! 💪",
+                        "Charlie says: 'You can do it!'",
+                        "Cassian believes in you! 💙"
+                    ];
+                    showPopup("Oops!", encouragement[Math.floor(Math.random() * encouragement.length)]);
+                }, 500);
+            }
+        } else {
+            switch(type) {
+                case 'book': points = 20; break;
+                case 'coffee': points = 15; break;
+                case 'healthy-snack': points = 25; break;
+                case 'running-shoe': points = 30; break;
+                case 'croissant': points = 12; break;
+                case 'tea': points = 18; break;
+                case 'cookie': points = 10; break;
+                case 'fruit': points = 22; break;
+            }
+            playCollectSound();
+            createParticles(collectible);
         }
         
         score += points;
         updateScore();
-        playCollectSound();
-        createParticles(collectible);
         
         // Remove collectible
         collectible.parentNode.removeChild(collectible);
         collectibles.splice(index, 1);
         
-        // Show random message every 5 collectibles
-        if (score > 0 && score % 100 === 0) {
+        // Show random message every 100 points
+        if (points > 0 && score > 0 && score % 100 === 0) {
             const message = messages[Math.floor(Math.random() * messages.length)];
-            showPopup("Keep Going!", message);
+            showPopup("Amazing!", message);
         }
+    }
+
+    function showDamageText(element, text) {
+        const rect = element.getBoundingClientRect();
+        const damageText = document.createElement('div');
+        damageText.className = 'damage-text';
+        damageText.textContent = text;
+        damageText.style.left = rect.left + rect.width/2 + 'px';
+        damageText.style.top = rect.top + 'px';
+        document.body.appendChild(damageText);
+        
+        setTimeout(() => {
+            if (damageText.parentNode) {
+                damageText.parentNode.removeChild(damageText);
+            }
+        }, 2000);
     }
 
     function createParticles(element) {
         const rect = element.getBoundingClientRect();
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 12; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
-            particle.style.left = rect.left + rect.width/2 + 'px';
-            particle.style.top = rect.top + rect.height/2 + 'px';
-            particle.style.left = (rect.left + Math.random() * 20 - 10) + 'px';
+            particle.style.left = (rect.left + rect.width/2 + Math.random() * 30 - 15) + 'px';
+            particle.style.top = (rect.top + rect.height/2 + Math.random() * 30 - 15) + 'px';
             document.body.appendChild(particle);
             
             setTimeout(() => {
@@ -585,21 +917,24 @@ Copy<div id="gameContainer">
         gameRunning = false;
         clearInterval(gameTimer);
         clearInterval(spawnTimer);
+        clearInterval(kidMoveTimer);
         
         playWinSound();
         
         let finalMessage = "";
-        if (score >= 200) {
+        if (score >= 300) {
             finalMessage = winMessages[0];
-        } else if (score >= 100) {
+        } else if (score >= 150) {
             finalMessage = winMessages[1];
-        } else {
+        } else if (score >= 50) {
             finalMessage = winMessages[2];
+        } else {
+            finalMessage = winMessages[3];
         }
         
         setTimeout(() => {
             showPopup("🎉 Game Complete! 🎉", 
-                `${finalMessage}<br><br>Final Score: ${score}<br>You're amazing at 33! 💕`);
+                `${finalMessage}<br><br>Final Score: ${score}<br>Cassian and Charlie had so much fun playing with you! 👦👧💕<br><br>You're the best mom ever! 🌟`);
         }, 1000);
     }
 
@@ -630,9 +965,15 @@ Copy<div id="gameContainer">
     // Handle orientation changes
     window.addEventListener('orientationchange', () => {
         setTimeout(() => {
-            playerX = Math.min(playerX, window.innerWidth - 60);
-            playerY = Math.min(playerY, window.innerHeight - 60);
+            playerX = Math.min(playerX, window.innerWidth - 90);
+            playerY = Math.min(playerY, window.innerHeight - 90);
             updatePlayerPosition();
+            
+            cassianX = Math.min(cassianX, window.innerWidth - 75);
+            cassianY = Math.min(cassianY, window.innerHeight - 80);
+            charlieX = Math.min(charlieX, window.innerWidth - 75);
+            charlieY = Math.min(charlieY, window.innerHeight - 80);
+            updateKidsPositions();
         }, 100);
     });
 </script>
