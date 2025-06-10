@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 33rd Birthday - Café Literary Quest</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+Copy    body {
+        font-family: 'Georgia', serif;
+        background: linear-gradient(135deg, #8B4513, #D2691E, #CD853F);
+        overflow: hidden;
+        touch-action: manipulation;
+        user-select: none;
+    }
+
+    #gameContainer {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(255,215,0,0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 60%, rgba(255,140,0,0.1) 0%, transparent 50%),
+            linear-gradient(45deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+        background-attachment: fixed;
+    }
+
+    .bookshelf {
+        position: absolute;
+        width: 60px;
+        height: 120px;
+        background: linear-gradient(90deg, #654321 0%, #8B4513 50%, #654321 100%);
+        border: 2px solid #4A4A4A;
+        border-radius: 5px;
+    }
+
+    .bookshelf:before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 5px;
+        right: 5px;
+        height: 15px;
+        background: repeating-linear-gradient(90deg, #FF6B6B 0px, #FF6B6B 8px, #4ECDC4 8px, #4ECDC4 16px, #45B7D1 16px, #45B7D1 24px, #96CEB4 24px, #96CEB4 32px);
+        border-radius: 2px;
+    }
+
+    .bookshelf:after {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 5px;
+        right: 5px;
+        height: 15px;
+        background: repeating-linear-gradient(90deg, #DDA0DD 0px, #DDA0DD 8px, #F0E68C 8px, #F0E68C 16px, #FFB6C1 16px, #FFB6C1 24px, #98FB98 24px, #98FB98 32px);
+        border-radius: 2px;
+    }
+
+    .cafe-table {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle, #8B4513 30%, #654321 70%);
+        border-radius: 50%;
+        border: 3px solid #4A4A4A;
+    }
+
+    .cafe-table:after {
+        content: '☕';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+
+    #player {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(45deg, #FF6B9D, #FF8E53);
+        border-radius: 50%;
+        border: 3px solid #FFF;
+        transition: all 0.1s ease;
+        z-index: 100;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    #player:before {
+        content: '👩‍🦰';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+    }
+
+    .collectible {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        animation: float 2s ease-in-out infinite;
+        z-index: 50;
+    }
+
+    .book {
+        background: linear-gradient(45deg, #4ECDC4, #45B7D1);
+        border: 2px solid #FFF;
+    }
+
+    .book:before {
+        content: '📚';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+
+    .coffee {
+        background: linear-gradient(45deg, #D2691E, #8B4513);
+        border: 2px solid #FFF;
+    }
+
+    .coffee:before {
+        content: '☕';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+
+    .healthy-snack {
+        background: linear-gradient(45deg, #98FB98, #90EE90);
+        border: 2px solid #FFF;
+    }
+
+    .healthy-snack:before {
+        content: '🥗';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+
+    .running-shoe {
+        background: linear-gradient(45deg, #FF1493, #FF69B4);
+        border: 2px solid #FFF;
+    }
+
+    .running-shoe:before {
+        content: '👟';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    #ui {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        z-index: 200;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #score, #timer {
+        background: rgba(0,0,0,0.7);
+        color: #FFD700;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        border: 2px solid #FFD700;
+    }
+
+    #popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+        padding: 30px;
+        border-radius: 20px;
+        border: 4px solid #FF69B4;
+        text-align: center;
+        z-index: 300;
+        display: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        max-width: 90%;
+    }
+
+    #popup h2 {
+        color: #FF1493;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+
+    #popup p {
+        color: #8B008B;
+        font-size: 18px;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
+    #popup button {
+        background: linear-gradient(45deg, #FF69B4, #FF1493);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    #popup button:hover {
+        transform: scale(1.05);
+    }
+
+    #startScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #8B4513, #D2691E);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 400;
+        text-align: center;
+        padding: 20px;
+    }
+
+    #startScreen h1 {
+        color: #FFD700;
+        font-size: 28px;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    #startScreen p {
+        color: #FFF;
+        font-size: 16px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    #startButton {
+        background: linear-gradient(45deg, #FF69B4, #FF1493);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    #startButton:hover {
+        transform: scale(1.1);
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #FFD700;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: particle-float 3s ease-out forwards;
+    }
+
+    @keyframes particle-float {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-100px) scale(0);
+        }
+    }
+
+    @media (max-height: 600px) {
+        #startScreen h1 { font-size: 24px; }
+        #startScreen p { font-size: 14px; }
+        #popup h2 { font-size: 20px; }
+        #popup p { font-size: 16px; }
+    }
+</style>
+</head>
+<body>
+    <div id="startScreen">
+        <h1>🎉 Happy 33rd Birthday! 🎉</h1>
+        <p>Welcome to your personalized Café Literary Quest!<br>
+        Explore the charming Parisian bookstore café,<br>
+        collect books, coffee, and healthy treats!<br><br>
+        👆 Tap anywhere to move<br>
+        📚 Collect items for points<br>
+        ⏰ Beat the clock!</p>
+        <button id="startButton">Start Your Adventure!</button>
+    </div>
+Copy<div id="gameContainer">
+    <div id="ui">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time: 60</div>
+    </div>
+    <div id="player"></div>
+</div>
+
+<div id="popup">
+    <h2 id="popupTitle"></h2>
+    <p id="popupMessage"></p>
+    <button onclick="closePopup()">Continue</button>
+</div>
+
+<script>
+    // Game variables
+    let score = 0;
+    let timeLeft = 60;
+    let gameRunning = false;
+    let player = document.getElementById('player');
+    let gameContainer = document.getElementById('gameContainer');
+    let collectibles = [];
+    let obstacles = [];
+    let gameTimer;
+    let spawnTimer;
+    
+    // Player position
+    let playerX = window.innerWidth / 2 - 20;
+    let playerY = window.innerHeight / 2 - 20;
+    
+    // Congratulatory messages
+    const messages = [
+        "Cassian and Charlie Love You! 💕",
+        "You are such a great runner! 🏃‍♀️",
+        "Happy Birthday from your book-loving family! 📚",
+        "Another chapter in your amazing story! ✨",
+        "Healthy and happy at 33! 🌟",
+        "Keep reading, keep running, keep being amazing! 💪"
+    ];
+    
+    const winMessages = [
+        "Happy Birthday From Charlie, Cassian and Dada! 🎉💕",
+        "You completed your literary café adventure! 📚☕",
+        "33 years of being absolutely wonderful! ✨🎂"
+    ];
+
+    // Sound effects (using Web Audio API)
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playSound(frequency, duration, type = 'sine') {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = frequency;
+        oscillator.type = type;
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + duration);
+    }
+
+    function playCollectSound() {
+        playSound(800, 0.2);
+        setTimeout(() => playSound(1200, 0.1), 100);
+    }
+
+    function playWinSound() {
+        const notes = [523, 659, 784, 1047];
+        notes.forEach((note, index) => {
+            setTimeout(() => playSound(note, 0.3), index * 200);
+        });
+    }
+
+    // Initialize game
+    function initGame() {
+        updatePlayerPosition();
+        createStaticElements();
+        
+        // Touch controls
+        gameContainer.addEventListener('touchstart', handleTouch, { passive: false });
+        gameContainer.addEventListener('touchmove', handleTouch, { passive: false });
+        gameContainer.addEventListener('click', handleClick);
+        
+        document.getElementById('startButton').addEventListener('click', startGame);
+    }
+
+    function createStaticElements() {
+        // Create bookshelves
+        for (let i = 0; i < 6; i++) {
+            const bookshelf = document.createElement('div');
+            bookshelf.className = 'bookshelf';
+            bookshelf.style.left = Math.random() * (window.innerWidth - 60) + 'px';
+            bookshelf.style.top = Math.random() * (window.innerHeight - 200) + 100 + 'px';
+            gameContainer.appendChild(bookshelf);
+        }
+        
+        // Create café tables
+        for (let i = 0; i < 4; i++) {
+            const table = document.createElement('div');
+            table.className = 'cafe-table';
+            table.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+            table.style.top = Math.random() * (window.innerHeight - 140) + 100 + 'px';
+            gameContainer.appendChild(table);
+        }
+    }
+
+    function handleTouch(e) {
+        e.preventDefault();
+        if (!gameRunning) return;
+        
+        const touch = e.touches[0] || e.changedTouches[0];
+        movePlayerTo(touch.clientX, touch.clientY);
+    }
+
+    function handleClick(e) {
+        if (!gameRunning) return;
+        movePlayerTo(e.clientX, e.clientY);
+    }
+
+    function movePlayerTo(x, y) {
+        playerX = Math.max(20, Math.min(window.innerWidth - 60, x - 20));
+        playerY = Math.max(70, Math.min(window.innerHeight - 60, y - 20));
+        updatePlayerPosition();
+    }
+
+    function updatePlayerPosition() {
+        player.style.left = playerX + 'px';
+        player.style.top = playerY + 'px';
+    }
+
+    function startGame() {
+        document.getElementById('startScreen').style.display = 'none';
+        gameRunning = true;
+        score = 0;
+        timeLeft = 60;
+        
+        // Resume audio context
+        if (audioContext.state === 'suspended') {
+            audioContext.resume();
+        }
+        
+        updateScore();
+        updateTimer();
+        
+        gameTimer = setInterval(() => {
+            timeLeft--;
+            updateTimer();
+            
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 1000);
+        
+        spawnTimer = setInterval(spawnCollectible, 1500);
+        
+        // Show welcome message
+        setTimeout(() => {
+            showPopup("Welcome to Your Café!", "Cassian and Charlie Love You! 💕");
+        }, 2000);
+    }
+
+    function spawnCollectible() {
+        if (!gameRunning) return;
+        
+        const types = ['book', 'coffee', 'healthy-snack', 'running-shoe'];
+        const type = types[Math.floor(Math.random() * types.length)];
+        
+        const collectible = document.createElement('div');
+        collectible.className = `collectible ${type}`;
+        collectible.style.left = Math.random() * (window.innerWidth - 30) + 'px';
+        collectible.style.top = Math.random() * (window.innerHeight - 130) + 100 + 'px';
+        
+        gameContainer.appendChild(collectible);
+        collectibles.push(collectible);
+        
+        // Remove after 8 seconds if not collected
+        setTimeout(() => {
+            if (collectible.parentNode) {
+                collectible.parentNode.removeChild(collectible);
+                const index = collectibles.indexOf(collectible);
+                if (index > -1) collectibles.splice(index, 1);
+            }
+        }, 8000);
+    }
+
+    function checkCollisions() {
+        collectibles.forEach((collectible, index) => {
+            const rect1 = player.getBoundingClientRect();
+            const rect2 = collectible.getBoundingClientRect();
+            
+            if (rect1.left < rect2.right && 
+                rect1.right > rect2.left && 
+                rect1.top < rect2.bottom && 
+                rect1.bottom > rect2.top) {
+                
+                // Collision detected
+                collectCollectible(collectible, index);
+            }
+        });
+    }
+
+    function collectCollectible(collectible, index) {
+        const type = collectible.classList[1];
+        let points = 0;
+        
+        switch(type) {
+            case 'book': points = 20; break;
+            case 'coffee': points = 15; break;
+            case 'healthy-snack': points = 25; break;
+            case 'running-shoe': points = 30; break;
+        }
+        
+        score += points;
+        updateScore();
+        playCollectSound();
+        createParticles(collectible);
+        
+        // Remove collectible
+        collectible.parentNode.removeChild(collectible);
+        collectibles.splice(index, 1);
+        
+        // Show random message every 5 collectibles
+        if (score > 0 && score % 100 === 0) {
+            const message = messages[Math.floor(Math.random() * messages.length)];
+            showPopup("Keep Going!", message);
+        }
+    }
+
+    function createParticles(element) {
+        const rect = element.getBoundingClientRect();
+        for (let i = 0; i < 8; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = rect.left + rect.width/2 + 'px';
+            particle.style.top = rect.top + rect.height/2 + 'px';
+            particle.style.left = (rect.left + Math.random() * 20 - 10) + 'px';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                if (particle.parentNode) {
+                    particle.parentNode.removeChild(particle);
+                }
+            }, 3000);
+        }
+    }
+
+    function updateScore() {
+        document.getElementById('score').textContent = `Score: ${score}`;
+    }
+
+    function updateTimer() {
+        document.getElementById('timer').textContent = `Time: ${timeLeft}`;
+    }
+
+    function endGame() {
+        gameRunning = false;
+        clearInterval(gameTimer);
+        clearInterval(spawnTimer);
+        
+        playWinSound();
+        
+        let finalMessage = "";
+        if (score >= 200) {
+            finalMessage = winMessages[0];
+        } else if (score >= 100) {
+            finalMessage = winMessages[1];
+        } else {
+            finalMessage = winMessages[2];
+        }
+        
+        setTimeout(() => {
+            showPopup("🎉 Game Complete! 🎉", 
+                `${finalMessage}<br><br>Final Score: ${score}<br>You're amazing at 33! 💕`);
+        }, 1000);
+    }
+
+    function showPopup(title, message) {
+        document.getElementById('popupTitle').textContent = title;
+        document.getElementById('popupMessage').innerHTML = message;
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Game loop
+    function gameLoop() {
+        if (gameRunning) {
+            checkCollisions();
+        }
+        requestAnimationFrame(gameLoop);
+    }
+
+    // Initialize everything
+    window.addEventListener('load', () => {
+        initGame();
+        gameLoop();
+    });
+
+    // Handle orientation changes
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            playerX = Math.min(playerX, window.innerWidth - 60);
+            playerY = Math.min(playerY, window.innerHeight - 60);
+            updatePlayerPosition();
+        }, 100);
+    });
+</script>
+</body>
+</html>
+</html>
+<css>
+/* All CSS is included in the HTML above for easier deployment */
+</css>
+<javascript>
+/* All JavaScript is included in the HTML above for easier deployment */
+</javascript>
